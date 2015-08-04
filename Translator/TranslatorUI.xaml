@@ -1,0 +1,50 @@
+﻿<Window x:Class="Translator.TranslatorUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Translator" Height="150" Width="600"
+        Loaded="Window_Loaded" Closing="Window_Closing"
+        >
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="FromLanguageCombo" Grid.Row="0" Grid.Column="0" SelectionChanged="FromLanguageCombo_SelectionChanged" />
+
+        <!--Border Style="{StaticResource BorderButton}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">
+            <Label>swap</Label>
+        </Border-->
+        <Button Click="SwapLanguages"  x:Name="SwapButton"
+                Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" 
+                Foreground="Black" Background="LightGray" BorderThickness="0"
+                Height="30" Width="60" >SWAP</Button>
+
+        <ComboBox x:Name="ToLanguageCombo" Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" SelectionChanged="ToLanguageCombo_SelectionChanged" />
+        <CheckBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Auto" Name="AutoTranslateCheckBox" Unchecked="AutoTranslateCheckBox_Unchecked" Checked="AutoTranslateCheckBox_Checked"/>
+        <Button Click="TranslateText"  Name="TranslateButton"
+                Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0"
+                Foreground="White" Background="#FF2675FF" BorderThickness="0"
+                Height="30" Width="60" >Translate</Button>
+
+        
+        <TextBox Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" AcceptsReturn="True" x:Name="TextFrom" TextChanged="TextFrom_TextChanged"/>
+        <TextBox Margin="10,0,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" Focusable="True" x:Name="TextTo" IsReadOnly="True" Background="#FFE8E8E8"/>
+        
+        <Image Name="SpeakImage"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="15" Margin="5,0,0,5" Grid.Row="1" Width="15" Source="Icons/voice.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+
+    </Grid>
+</Window>
